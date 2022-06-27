@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  node:
+    container_name: node
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - ./:/server
+
+  mariadb:
+    container_name: mariadb
+    image: mariadb:10.5.8  
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+  
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    environment:
+      MYSQL_USERNAME: root
+      MYSQL_ROOT_PASSWORD: root
+      PMA_HOST: mariadb
+    volumes:
+      - "/sessions"
+
+  redis:
+    container_name: redis
+    image: redis:6.0.9 
+    volumes:
+      - ./docker/redis/redis.conf:/redis.conf
+    command: [ "redis-server", "/redis.conf" ]      
+  

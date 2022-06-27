@@ -1,0 +1,23 @@
+version: "3.8" 
+
+services:
+  portainer:
+    ports:
+      - "9001:9000"  
+  
+  node:
+    ports:
+      - "1340:1340"
+      - "9230:9230"
+    
+  mariadb:
+    ports:
+      - "3306:3306"
+
+  phpmyadmin:
+    ports:
+      - "9090:80"
+
+  redis:
+    ports:
+      - "6712:80"    

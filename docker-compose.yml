@@ -19,6 +19,7 @@ services:
     container_name: mariadb
     image: mariadb:10.5.8  
     environment:
+      MYSQL_USERNAME: root
       MYSQL_ROOT_PASSWORD: root
   
   phpmyadmin:
@@ -38,3 +39,12 @@ services:
       - ./docker/redis/redis.conf:/redis.conf
     command: [ "redis-server", "/redis.conf" ]      
   
+  rabbitmq:
+    container_name: rabbitmq
+    image: 'rabbitmq:3.9-management-alpine'
+    volumes:
+      - ./docker/rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+    environment:
+        AMQP_URL: 'amqp://rabbitmq?connection_attempts=5&retry_delay=5'
+
+      

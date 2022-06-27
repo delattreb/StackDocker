@@ -16,7 +16,7 @@ services:
 
   phpmyadmin:
     ports:
-      - "9090:80"
+      - "9091:80"
 
   redis:
     ports:

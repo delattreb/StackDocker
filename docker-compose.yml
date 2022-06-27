@@ -43,7 +43,7 @@ services:
     container_name: rabbitmq
     image: 'rabbitmq:3.9-management-alpine'
     volumes:
-      - ./docker/rabbitmq/etc/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+      - ./docker/rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
     environment:
         AMQP_URL: 'amqp://rabbitmq?connection_attempts=5&retry_delay=5'
 

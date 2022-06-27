@@ -3,7 +3,7 @@ version: "3.8"
 services:
   portainer:
     ports:
-      - "9001:9000"  
+      - "9000:9000"  
   
   node:
     ports:
@@ -20,4 +20,9 @@ services:
 
   redis:
     ports:
-      - "6712:80"    
+      - "6379:6379"
+
+  rabbitmq:
+    ports:
+      - "5672:5672"
+      - "15672:15672"

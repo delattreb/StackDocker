@@ -1,10 +1,14 @@
 version: "3.8"
 
+volumes:
+  portainer_data:
+
 services:
   portainer:
     container_name: portainer
     image: portainer/portainer-ce
     volumes:
+      - portainer_data:/data
       - /var/run/docker.sock:/var/run/docker.sock
 
   node:
